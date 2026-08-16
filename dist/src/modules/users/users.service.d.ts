@@ -1,0 +1,111 @@
+import { PrismaService } from '../../database/prisma.service';
+import { CreateAddressDto } from './dto/create-address.dto';
+import { UpdateAddressDto } from './dto/update-address.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
+export declare class UsersService {
+    private prisma;
+    constructor(prisma: PrismaService);
+    getProfile(userId: string): Promise<{
+        addresses: {
+            id: string;
+            name: string;
+            phone: string;
+            createdAt: Date;
+            updatedAt: Date;
+            type: import("@prisma/client").$Enums.AddressType;
+            userId: string;
+            isDefault: boolean;
+            addressLine1: string;
+            addressLine2: string | null;
+            city: string;
+            state: string;
+            postalCode: string;
+            country: string;
+        }[];
+        id: string;
+        email: string;
+        name: string;
+        phone: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        avatarUrl: string | null;
+        status: import("@prisma/client").$Enums.UserStatus;
+    }>;
+    updateProfile(userId: string, dto: UpdateProfileDto): Promise<{
+        id: string;
+        email: string;
+        name: string;
+        phone: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+        avatarUrl: string | null;
+        status: import("@prisma/client").$Enums.UserStatus;
+    }>;
+    getAddresses(userId: string): Promise<{
+        id: string;
+        name: string;
+        phone: string;
+        createdAt: Date;
+        updatedAt: Date;
+        type: import("@prisma/client").$Enums.AddressType;
+        userId: string;
+        isDefault: boolean;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+    }[]>;
+    createAddress(userId: string, dto: CreateAddressDto): Promise<{
+        id: string;
+        name: string;
+        phone: string;
+        createdAt: Date;
+        updatedAt: Date;
+        type: import("@prisma/client").$Enums.AddressType;
+        userId: string;
+        isDefault: boolean;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+    }>;
+    updateAddress(userId: string, addressId: string, dto: UpdateAddressDto): Promise<{
+        id: string;
+        name: string;
+        phone: string;
+        createdAt: Date;
+        updatedAt: Date;
+        type: import("@prisma/client").$Enums.AddressType;
+        userId: string;
+        isDefault: boolean;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+    }>;
+    setDefaultAddress(userId: string, addressId: string): Promise<{
+        id: string;
+        name: string;
+        phone: string;
+        createdAt: Date;
+        updatedAt: Date;
+        type: import("@prisma/client").$Enums.AddressType;
+        userId: string;
+        isDefault: boolean;
+        addressLine1: string;
+        addressLine2: string | null;
+        city: string;
+        state: string;
+        postalCode: string;
+        country: string;
+    }>;
+    deleteAddress(userId: string, addressId: string): Promise<{
+        message: string;
+    }>;
+}
