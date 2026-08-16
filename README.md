@@ -97,3 +97,167 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 # uniquevastra-backend
+
+
+
+# 🚀 UniqueVastra Master Command Reference & Cheat Sheet
+
+Quick reference guide for running, building, testing, and managing all components of the UniqueVastra platform (Backend REST API, Admin Web App, React Native Mobile App, Database, and Maestro E2E Testing).
+
+---
+
+## 📌 Port Allocation Summary
+
+| Service | Port | Local URL | Description |
+| :--- | :--- | :--- | :--- |
+| **NestJS Backend REST API** | **`3000`** | `http://localhost:3000/api/v1` | Core REST API for Auth, Catalog, Cart, Orders, Payments |
+| **Swagger API Documentation** | **`3000`** | `http://localhost:3000/api/docs` | Interactive Swagger API docs & endpoint testing |
+| **Admin Web App (Vite/React)** | **`3001`** | `http://localhost:3001` | Admin portal for products, inventory, categories & orders |
+| **Mobile Metro Bundler** | **`8081`** | `http://localhost:8081` | React Native Metro packager & bundler |
+| **Prisma Studio (Web DB GUI)** | **`5555`** | `http://localhost:5555` | Visual browser database editor |
+| **PostgreSQL Database** | **`5432`** | `localhost:5432` | Primary relational database |
+
+---
+
+## ⚙️ 1. NestJS Backend Commands (`backend/`)
+
+Run commands inside the `/Users/vinodkumar/Desktop/uniquevastra/backend` directory:
+
+```bash
+# Navigate to backend directory
+cd backend
+
+# Start NestJS Development Server (with auto-reload)
+npm run start:dev
+
+# Start NestJS Production Server
+npm run start:prod
+
+# Build NestJS Production Bundle
+npm run build
+
+# Open Prisma Studio (Browser Visual Database GUI)
+npx prisma studio
+
+# Seed Database with Initial Categories, Admin & Products
+npm run seed
+
+# Run Prisma Database Migrations
+npx prisma migrate dev
+
+# Sync Prisma Schema with Database without migrations
+npx prisma db push
+
+# Generate Prisma Client Types
+npx prisma generate
+```
+
+---
+
+## 💻 2. Admin Web Application Commands (`admin/`)
+
+Run commands inside the `/Users/vinodkumar/Desktop/uniquevastra/admin` directory:
+
+```bash
+# Navigate to admin directory
+cd admin
+
+# Start Vite Development Server (http://localhost:3001)
+npm run dev
+
+# Typecheck & Build Production Bundle (Vite)
+npm run build
+
+# Preview Production Build locally
+npm run preview
+```
+
+---
+
+## 📱 3. React Native Mobile Application Commands (`uniquevastra/`)
+
+Run commands inside the `/Users/vinodkumar/Desktop/uniquevastra/uniquevastra` directory:
+
+```bash
+# Navigate to mobile directory
+cd uniquevastra
+
+# Start Metro Bundler
+yarn start
+# or
+npm start
+
+# Start Metro Bundler with clean cache reset
+yarn start --reset-cache
+
+# Launch iOS App on iOS Simulator (macOS)
+npx react-native run-ios
+
+# Launch Android App on Android Emulator / Physical Device
+npx react-native run-android
+
+# Run TypeScript Static Code Check
+npx tsc --noEmit
+```
+
+---
+
+## 🧪 4. Maestro Automated Mobile E2E Testing Commands (`uniquevastra/`)
+
+Maestro automated tests are located in `uniquevastra/.maestro/`:
+
+```bash
+# Navigate to mobile directory
+cd uniquevastra
+
+# Run Complete Purchase End-to-End Smoke Test Flow
+maestro test .maestro/regression/complete_purchase.yaml
+
+# Run Authentication Test Flows
+maestro test .maestro/auth/login.yaml
+maestro test .maestro/auth/signup.yaml
+maestro test .maestro/auth/invalid_login.yaml
+maestro test .maestro/auth/logout.yaml
+
+# Run Product Test Flows
+maestro test .maestro/products/product_list.yaml
+
+# Run Cart Test Flows
+maestro test .maestro/cart/add_to_cart.yaml
+```
+
+---
+
+## 🔍 5. Port Inspection & Process Management (macOS)
+
+```bash
+# Check all active ports used by UniqueVastra
+lsof -i :3000,3001,8081,5432,5555
+
+# Check specific port (e.g. 3000)
+lsof -i :3000
+
+# Kill process running on a specific port (e.g. if port 3000 is stuck)
+kill -9 $(lsof -ti :3000)
+
+# Kill process on Admin port 3001
+kill -9 $(lsof -ti :3001)
+
+# Kill process on Metro port 8081
+kill -9 $(lsof -ti :8081)
+```
+
+---
+
+## 🔑 6. Seeded Test Credentials
+
+### Admin Login
+- **URL**: `http://localhost:3001`
+- **Email**: `superadmin@uniquevastra.com`
+- **Password**: `SuperAdmin@123`
+
+### Customer Login
+- **App**: Mobile App
+- **Email**: `customer@uniquevastra.com`
+- **Password**: `CustomerPass@123`
+
